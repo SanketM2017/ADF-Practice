@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "Select * from SalesOrderHeader Where Name='Bikes';",
+						"sqlReaderQuery": "SELECT\n    h.SalesOrderID,\n    h.OrderDate,\n    h.CustomerID,\n    h.TotalDue,\n    d.ProductID,\n    d.OrderQty,\n    d.UnitPrice,\n    d.LineTotal\nFROM SalesOrderHeader1 h\nJOIN SalesOrderDetail d\nON h.SalesOrderID = d.SalesOrderID;",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -97,11 +97,11 @@
 			},
 			"sourcetableName": {
 				"type": "string",
-				"defaultValue": "SalesOrderHeader"
+				"defaultValue": "SalesOrderDetail"
 			},
 			"targettableName": {
 				"type": "string",
-				"defaultValue": "Bike"
+				"defaultValue": "SalesOrderFullTable"
 			},
 			"targetDBName": {
 				"type": "string",
