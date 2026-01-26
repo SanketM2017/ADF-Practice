@@ -1,0 +1,99 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-azure-practice0784"
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"Is_AzureDataLakestorage_password": {
+			"value": ""
+		},
+		"Is_Azuresqldatabase_password": {
+			"value": ""
+		},
+		"Is_sqlserver_password": {
+			"value": ""
+		},
+		"LS_OnPrem_SQLServer_password": {
+			"value": ""
+		},
+		"Ls_AdlsGen2_accountKey": {
+			"value": ""
+		},
+		"Ls_SqlServer_password": {
+			"value": ""
+		},
+		"ls_AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "demo-database07.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "PracticeDB"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "sanket"
+		},
+		"Is_AzureDataLakestorage_properties_typeProperties_server": {
+			"value": "demo-database07.database.windows.net"
+		},
+		"Is_AzureDataLakestorage_properties_typeProperties_database": {
+			"value": "PracticeDB"
+		},
+		"Is_AzureDataLakestorage_properties_typeProperties_userName": {
+			"value": "sanket"
+		},
+		"Is_Azuresqldatabase_properties_typeProperties_server": {
+			"value": "demo-database07.database.windows.net"
+		},
+		"Is_Azuresqldatabase_properties_typeProperties_database": {
+			"value": "TestDB"
+		},
+		"Is_Azuresqldatabase_properties_typeProperties_userName": {
+			"value": "sanket"
+		},
+		"Is_SAS_AzureBlobStroage_sasUri": {
+			"value": ""
+		},
+		"Is_demo_adf_Kv_properties_typeProperties_baseUrl": {
+			"value": "https://kv-adf-practice05.vault.azure.net/"
+		},
+		"Is_sqlserver_properties_typeProperties_server": {
+			"value": "@{linkedService().serverName}"
+		},
+		"Is_sqlserver_properties_typeProperties_database": {
+			"value": "@{linkedService().dbName}"
+		},
+		"Is_sqlserver_properties_typeProperties_userName": {
+			"value": "sanket"
+		},
+		"LS_OnPrem_SQLServer_properties_typeProperties_server": {
+			"value": "demo-database07.database.windows.net"
+		},
+		"LS_OnPrem_SQLServer_properties_typeProperties_database": {
+			"value": "PracticeDB"
+		},
+		"LS_OnPrem_SQLServer_properties_typeProperties_userName": {
+			"value": "sanket"
+		},
+		"Ls_AdlsGen2_properties_typeProperties_url": {
+			"value": "https://saazurepractice074.dfs.core.windows.net/"
+		},
+		"Ls_SqlServer_properties_typeProperties_server": {
+			"value": "@{linkedService().serverName}"
+		},
+		"Ls_SqlServer_properties_typeProperties_database": {
+			"value": "@{linkedService().DBName}"
+		},
+		"Ls_SqlServer_properties_typeProperties_userName": {
+			"value": "sanket"
+		},
+		"ls_AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://saazurepractice074.dfs.core.windows.net/"
+		}
+	}
+}

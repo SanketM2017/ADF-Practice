@@ -1,0 +1,292 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adf-azure-practice0784"
+		},
+		"AzureSqlDatabase1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureSqlDatabase1'"
+		},
+		"Is_AzureDataLakestorage_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Is_AzureDataLakestorage'"
+		},
+		"Is_Azuresqldatabase_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Is_Azuresqldatabase'"
+		},
+		"Is_sqlserver_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Is_sqlserver'"
+		},
+		"LS_OnPrem_SQLServer_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_OnPrem_SQLServer'"
+		},
+		"Ls_AdlsGen2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'Ls_AdlsGen2'"
+		},
+		"Ls_SqlServer_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Ls_SqlServer'"
+		},
+		"ls_AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_AzureDataLakeStorage1'"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "demo-database07.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "PracticeDB"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sanket"
+		},
+		"Is_AzureDataLakestorage_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "demo-database07.database.windows.net"
+		},
+		"Is_AzureDataLakestorage_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "PracticeDB"
+		},
+		"Is_AzureDataLakestorage_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sanket"
+		},
+		"Is_Azuresqldatabase_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "demo-database07.database.windows.net"
+		},
+		"Is_Azuresqldatabase_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "TestDB"
+		},
+		"Is_Azuresqldatabase_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sanket"
+		},
+		"Is_SAS_AzureBlobStroage_sasUri": {
+			"type": "secureString",
+			"metadata": "Secure string for 'sasUri' of 'Is_SAS_AzureBlobStroage'"
+		},
+		"Is_demo_adf_Kv_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://kv-adf-practice05.vault.azure.net/"
+		},
+		"Is_sqlserver_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "@{linkedService().serverName}"
+		},
+		"Is_sqlserver_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "@{linkedService().dbName}"
+		},
+		"Is_sqlserver_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sanket"
+		},
+		"LS_OnPrem_SQLServer_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "demo-database07.database.windows.net"
+		},
+		"LS_OnPrem_SQLServer_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "PracticeDB"
+		},
+		"LS_OnPrem_SQLServer_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sanket"
+		},
+		"Ls_AdlsGen2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://saazurepractice074.dfs.core.windows.net/"
+		},
+		"Ls_SqlServer_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "@{linkedService().serverName}"
+		},
+		"Ls_SqlServer_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "@{linkedService().DBName}"
+		},
+		"Ls_SqlServer_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sanket"
+		},
+		"ls_AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://saazurepractice074.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adf-azure-practice0784_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureSqlDatabase1_password": {
+						"value": "[parameters('AzureSqlDatabase1_password')]"
+					},
+					"Is_AzureDataLakestorage_password": {
+						"value": "[parameters('Is_AzureDataLakestorage_password')]"
+					},
+					"Is_Azuresqldatabase_password": {
+						"value": "[parameters('Is_Azuresqldatabase_password')]"
+					},
+					"Is_sqlserver_password": {
+						"value": "[parameters('Is_sqlserver_password')]"
+					},
+					"Ls_AdlsGen2_accountKey": {
+						"value": "[parameters('Ls_AdlsGen2_accountKey')]"
+					},
+					"Ls_SqlServer_password": {
+						"value": "[parameters('Ls_SqlServer_password')]"
+					},
+					"ls_AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('ls_AzureDataLakeStorage1_accountKey')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_userName')]"
+					},
+					"Is_AzureDataLakestorage_properties_typeProperties_server": {
+						"value": "[parameters('Is_AzureDataLakestorage_properties_typeProperties_server')]"
+					},
+					"Is_AzureDataLakestorage_properties_typeProperties_database": {
+						"value": "[parameters('Is_AzureDataLakestorage_properties_typeProperties_database')]"
+					},
+					"Is_AzureDataLakestorage_properties_typeProperties_userName": {
+						"value": "[parameters('Is_AzureDataLakestorage_properties_typeProperties_userName')]"
+					},
+					"Is_Azuresqldatabase_properties_typeProperties_server": {
+						"value": "[parameters('Is_Azuresqldatabase_properties_typeProperties_server')]"
+					},
+					"Is_Azuresqldatabase_properties_typeProperties_database": {
+						"value": "[parameters('Is_Azuresqldatabase_properties_typeProperties_database')]"
+					},
+					"Is_Azuresqldatabase_properties_typeProperties_userName": {
+						"value": "[parameters('Is_Azuresqldatabase_properties_typeProperties_userName')]"
+					},
+					"Is_SAS_AzureBlobStroage_sasUri": {
+						"value": "[parameters('Is_SAS_AzureBlobStroage_sasUri')]"
+					},
+					"Is_demo_adf_Kv_properties_typeProperties_baseUrl": {
+						"value": "[parameters('Is_demo_adf_Kv_properties_typeProperties_baseUrl')]"
+					},
+					"Is_sqlserver_properties_typeProperties_server": {
+						"value": "[parameters('Is_sqlserver_properties_typeProperties_server')]"
+					},
+					"Is_sqlserver_properties_typeProperties_database": {
+						"value": "[parameters('Is_sqlserver_properties_typeProperties_database')]"
+					},
+					"Is_sqlserver_properties_typeProperties_userName": {
+						"value": "[parameters('Is_sqlserver_properties_typeProperties_userName')]"
+					},
+					"Ls_AdlsGen2_properties_typeProperties_url": {
+						"value": "[parameters('Ls_AdlsGen2_properties_typeProperties_url')]"
+					},
+					"Ls_SqlServer_properties_typeProperties_server": {
+						"value": "[parameters('Ls_SqlServer_properties_typeProperties_server')]"
+					},
+					"Ls_SqlServer_properties_typeProperties_database": {
+						"value": "[parameters('Ls_SqlServer_properties_typeProperties_database')]"
+					},
+					"Ls_SqlServer_properties_typeProperties_userName": {
+						"value": "[parameters('Ls_SqlServer_properties_typeProperties_userName')]"
+					},
+					"ls_AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('ls_AzureDataLakeStorage1_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "adf-azure-practice0784_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_OnPrem_SQLServer_password": {
+						"value": "[parameters('LS_OnPrem_SQLServer_password')]"
+					},
+					"LS_OnPrem_SQLServer_properties_typeProperties_server": {
+						"value": "[parameters('LS_OnPrem_SQLServer_properties_typeProperties_server')]"
+					},
+					"LS_OnPrem_SQLServer_properties_typeProperties_database": {
+						"value": "[parameters('LS_OnPrem_SQLServer_properties_typeProperties_database')]"
+					},
+					"LS_OnPrem_SQLServer_properties_typeProperties_userName": {
+						"value": "[parameters('LS_OnPrem_SQLServer_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-azure-practice0784_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "adf-azure-practice0784_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-azure-practice0784_ArmTemplate_1')]"
+			]
+		}
+	]
+}
