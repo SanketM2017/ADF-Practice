@@ -851,6 +851,143 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/pl_Copy_Bikes_ProductCategory_Filter')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy_Bikes_Data",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.00:10:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "SqlServerSource",
+								"sqlReaderQuery": "Select * from SalesOrderHeader Where Name='Bikes';",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "SqlServerSink",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "sql_serversource",
+								"type": "DatasetReference",
+								"parameters": {
+									"sourceschemaName": {
+										"value": "@pipeline().parameters.sourceschemaName",
+										"type": "Expression"
+									},
+									"sourcetableName": {
+										"value": "@pipeline().parameters.sourcetableName",
+										"type": "Expression"
+									},
+									"sourceserverName": {
+										"value": "@pipeline().parameters.sourceserverName",
+										"type": "Expression"
+									},
+									"sourcedbname": {
+										"value": "@pipeline().parameters.sourceDBName",
+										"type": "Expression"
+									}
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "sql_servertarget",
+								"type": "DatasetReference",
+								"parameters": {
+									"schematargetName": {
+										"value": "@pipeline().parameters.targetschemaname",
+										"type": "Expression"
+									},
+									"schematargettable": {
+										"value": "@pipeline().parameters.targettableName",
+										"type": "Expression"
+									},
+									"targetdbName": {
+										"value": "@pipeline().parameters.targetDBName",
+										"type": "Expression"
+									},
+									"targetserverName": {
+										"value": "@pipeline().parameters.targetserverName",
+										"type": "Expression"
+									}
+								}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"sourceschemaName": {
+						"type": "string",
+						"defaultValue": "dbo"
+					},
+					"sourceDBName": {
+						"type": "string",
+						"defaultValue": "sales_Lt"
+					},
+					"sourcetableName": {
+						"type": "string",
+						"defaultValue": "SalesOrderHeader"
+					},
+					"targettableName": {
+						"type": "string",
+						"defaultValue": "Bike"
+					},
+					"targetDBName": {
+						"type": "string",
+						"defaultValue": "retail"
+					},
+					"targetschemaname": {
+						"type": "string",
+						"defaultValue": "dbo"
+					},
+					"sourceserverName": {
+						"type": "string",
+						"defaultValue": "demo-database07.database.windows.net"
+					},
+					"targetserverName": {
+						"type": "string",
+						"defaultValue": "demo-database07.database.windows.net"
+					}
+				},
+				"folder": {
+					"name": "adf-practice"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/sql_serversource')]",
+				"[concat(variables('factoryId'), '/datasets/sql_servertarget')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/pl_Copy_SalesLT_Address_To_Retail_Address')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -1731,42 +1868,6 @@
 				"[concat(variables('factoryId'), '/datasets/sql_serversource')]",
 				"[concat(variables('factoryId'), '/datasets/sql_servertarget')]"
 			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/pl_validation_demo')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Validation_demo",
-						"type": "Validation",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"dataset": {
-								"referenceName": "AzureSqlTable1",
-								"type": "DatasetReference",
-								"parameters": {
-									"tableName": "circuits.csv"
-								}
-							},
-							"timeout": "0.00:02:00",
-							"sleep": 10
-						}
-					}
-				],
-				"concurrency": 9,
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"folder": {
-					"name": "adf-practice"
-				},
-				"annotations": [],
-				"lastPublishTime": "2026-01-22T17:48:44Z"
-			},
-			"dependsOn": []
 		}
 	]
 }
