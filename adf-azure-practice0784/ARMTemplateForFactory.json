@@ -1560,11 +1560,11 @@
 					},
 					"sourcetableName": {
 						"type": "string",
-						"defaultValue": "students1"
+						"defaultValue": "Address"
 					},
 					"targettableName": {
 						"type": "string",
-						"defaultValue": "students1"
+						"defaultValue": "Address"
 					},
 					"targetschemaName": {
 						"type": "string",
@@ -1572,7 +1572,7 @@
 					},
 					"sourcedbName": {
 						"type": "string",
-						"defaultValue": "TestDB"
+						"defaultValue": "sales_Lt"
 					},
 					"sourceserverName": {
 						"type": "string",
@@ -1584,7 +1584,7 @@
 					},
 					"targetDbName": {
 						"type": "string",
-						"defaultValue": "TestDB"
+						"defaultValue": "retail"
 					}
 				},
 				"folder": {
