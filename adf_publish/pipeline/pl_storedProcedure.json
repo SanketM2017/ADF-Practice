@@ -1,0 +1,51 @@
+{
+	"name": "pl_storedProcedure",
+	"properties": {
+		"activities": [
+			{
+				"name": "Stored procedure1",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.00:10:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[InsertEmployee]",
+					"storedProcedureParameters": {
+						"Department": {
+							"value": "HR",
+							"type": "String"
+						},
+						"EmployeeName": {
+							"value": "Rameshwar",
+							"type": "String"
+						},
+						"Salary": {
+							"value": "776666",
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "Is_sqlserver",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"dbName": "PracticeDB",
+						"serverName": "demo-database07.database.windows.net"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "adf-practice"
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-01-22T18:53:46Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

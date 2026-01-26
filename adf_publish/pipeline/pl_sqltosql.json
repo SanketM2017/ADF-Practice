@@ -1,0 +1,134 @@
+{
+	"name": "pl_sqltosql",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copydata2",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.00:10:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"preCopyScript": {
+							"value": "@concat('TRUNCATE TABLE ',pipeline().parameters.targetDbName,'.',pipeline().parameters.targetschemaName,'.',pipeline().parameters.targettableName)",
+							"type": "Expression"
+						},
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "sql_serversource",
+						"type": "DatasetReference",
+						"parameters": {
+							"sourceschemaName": {
+								"value": "@pipeline().parameters.sourceschemaName",
+								"type": "Expression"
+							},
+							"sourcetableName": {
+								"value": "@pipeline().parameters.sourcetableName",
+								"type": "Expression"
+							},
+							"sourceserverName": {
+								"value": "@pipeline().parameters.sourceserverName",
+								"type": "Expression"
+							},
+							"sourcedbname": {
+								"value": "@pipeline().parameters.sourcedbName",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "sql_servertarget",
+						"type": "DatasetReference",
+						"parameters": {
+							"schematargetName": {
+								"value": "@pipeline().parameters.targetschemaName",
+								"type": "Expression"
+							},
+							"schematargettable": {
+								"value": "@pipeline().parameters.targettableName",
+								"type": "Expression"
+							},
+							"targetdbName": {
+								"value": "@pipeline().parameters.targetDbName",
+								"type": "Expression"
+							},
+							"targetserverName": {
+								"value": "@pipeline().parameters.targetserverName",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"sourceschemaName": {
+				"type": "string",
+				"defaultValue": "dbo"
+			},
+			"sourcetableName": {
+				"type": "string",
+				"defaultValue": "students1"
+			},
+			"targettableName": {
+				"type": "string",
+				"defaultValue": "students1"
+			},
+			"targetschemaName": {
+				"type": "string",
+				"defaultValue": "dbo"
+			},
+			"sourcedbName": {
+				"type": "string",
+				"defaultValue": "TestDB"
+			},
+			"sourceserverName": {
+				"type": "string",
+				"defaultValue": "demo-database07.database.windows.net"
+			},
+			"targetserverName": {
+				"type": "string",
+				"defaultValue": "demo-database07.database.windows.net"
+			},
+			"targetDbName": {
+				"type": "string",
+				"defaultValue": "TestDB"
+			}
+		},
+		"folder": {
+			"name": "adf-practice"
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-01-19T19:23:08Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

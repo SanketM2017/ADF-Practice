@@ -1,0 +1,38 @@
+{
+	"name": "Web-demo-post",
+	"properties": {
+		"activities": [
+			{
+				"name": "Web_demo_post",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.00:10:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"content-type": "application/json"
+					},
+					"url": "https://dummy.restapiexample.com/api/v1/create",
+					"body": {
+						"name": "ramesh",
+						"salary": "700000",
+						"age": "28"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "adf-practice"
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-01-22T16:52:03Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

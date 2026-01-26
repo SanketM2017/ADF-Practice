@@ -1,0 +1,43 @@
+{
+	"name": "pipeline_filter_demo",
+	"properties": {
+		"activities": [
+			{
+				"name": "Filter_demo",
+				"type": "Filter",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.NumbersList",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@greater(item(),3)",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"NumbersList": {
+				"type": "array",
+				"defaultValue": [
+					1,
+					2,
+					3,
+					4,
+					5,
+					6,
+					7
+				]
+			}
+		},
+		"folder": {
+			"name": "adf-practice"
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-01-19T20:08:02Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

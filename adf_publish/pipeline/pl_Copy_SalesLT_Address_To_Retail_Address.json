@@ -1,0 +1,130 @@
+{
+	"name": "pl_Copy_SalesLT_Address_To_Retail_Address",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_SalesLT_Address",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.00:10:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_AzureSQL_Source_Dynamic",
+						"type": "DatasetReference",
+						"parameters": {
+							"TableName": {
+								"value": "@pipeline().parameters.TableName",
+								"type": "Expression"
+							},
+							"SChemaName": {
+								"value": "@pipeline().parameters.SchemaName",
+								"type": "Expression"
+							},
+							"serverName": {
+								"value": "@pipeline().parameters.ServerName",
+								"type": "Expression"
+							},
+							"DBName": {
+								"value": "@pipeline().parameters.DBName",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_AzureSQL_Sink_Dynamic",
+						"type": "DatasetReference",
+						"parameters": {
+							"SourceServerName": {
+								"value": "@pipeline().parameters.sourceServerName",
+								"type": "Expression"
+							},
+							"SourceDBName": {
+								"value": "@pipeline().parameters.SourceDBName",
+								"type": "Expression"
+							},
+							"SourceTableName": {
+								"value": "@pipeline().parameters.SourcetableName",
+								"type": "Expression"
+							},
+							"SourceSchemaName": {
+								"value": "@pipeline().parameters.SourceSchemaName",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"TableName": {
+				"type": "string",
+				"defaultValue": "Address"
+			},
+			"ServerName": {
+				"type": "string",
+				"defaultValue": "demo-database07.database.windows.net"
+			},
+			"SchemaName": {
+				"type": "string",
+				"defaultValue": "dbo"
+			},
+			"SourceDBName": {
+				"type": "string",
+				"defaultValue": "retail"
+			},
+			"SourceSchemaName": {
+				"type": "string",
+				"defaultValue": "dbo"
+			},
+			"SourcetableName": {
+				"type": "string",
+				"defaultValue": "Address"
+			},
+			"DBName": {
+				"type": "string",
+				"defaultValue": "sales_Lt"
+			},
+			"sourceServerName": {
+				"type": "string",
+				"defaultValue": "demo-database07.database.windows.net"
+			}
+		},
+		"folder": {
+			"name": "adf-practice"
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-01-26T13:20:36Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

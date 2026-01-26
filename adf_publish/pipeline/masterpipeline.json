@@ -1,0 +1,29 @@
+{
+	"name": "masterpipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Execute Pipeline_demo",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "pl_sqltosql",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "adf-practice"
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-01-19T18:55:38Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
