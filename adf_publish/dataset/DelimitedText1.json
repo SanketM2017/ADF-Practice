@@ -10,8 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "sqloutput.csv",
-				"folderPath": "azure_practice_output",
+				"fileName": "ProductModel.csv",
 				"fileSystem": "azure-practice-container"
 			},
 			"columnDelimiter": ",",
