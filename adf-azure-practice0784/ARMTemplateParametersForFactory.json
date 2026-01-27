@@ -8,6 +8,12 @@
 		"AzureSqlDatabase1_password": {
 			"value": ""
 		},
+		"GenericADLS_CSV_accountKey": {
+			"value": ""
+		},
+		"GenericSQLDB_password": {
+			"value": ""
+		},
 		"Is_AzureDataLakestorage_password": {
 			"value": ""
 		},
@@ -36,6 +42,18 @@
 			"value": "PracticeDB"
 		},
 		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "sanket"
+		},
+		"GenericADLS_CSV_properties_typeProperties_url": {
+			"value": "https://saazurepractice074.dfs.core.windows.net/"
+		},
+		"GenericSQLDB_properties_typeProperties_server": {
+			"value": "demo-database07.database.windows.net"
+		},
+		"GenericSQLDB_properties_typeProperties_database": {
+			"value": "sales_Lt"
+		},
+		"GenericSQLDB_properties_typeProperties_userName": {
 			"value": "sanket"
 		},
 		"Is_AzureDataLakestorage_properties_typeProperties_server": {

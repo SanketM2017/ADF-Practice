@@ -11,6 +11,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'AzureSqlDatabase1'"
 		},
+		"GenericADLS_CSV_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'GenericADLS_CSV'"
+		},
+		"GenericSQLDB_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'GenericSQLDB'"
+		},
 		"Is_AzureDataLakestorage_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'Is_AzureDataLakestorage'"
@@ -48,6 +56,22 @@
 			"defaultValue": "PracticeDB"
 		},
 		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sanket"
+		},
+		"GenericADLS_CSV_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://saazurepractice074.dfs.core.windows.net/"
+		},
+		"GenericSQLDB_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "demo-database07.database.windows.net"
+		},
+		"GenericSQLDB_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sales_Lt"
+		},
+		"GenericSQLDB_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "sanket"
 		},
@@ -157,6 +181,12 @@
 					"AzureSqlDatabase1_password": {
 						"value": "[parameters('AzureSqlDatabase1_password')]"
 					},
+					"GenericADLS_CSV_accountKey": {
+						"value": "[parameters('GenericADLS_CSV_accountKey')]"
+					},
+					"GenericSQLDB_password": {
+						"value": "[parameters('GenericSQLDB_password')]"
+					},
 					"Is_AzureDataLakestorage_password": {
 						"value": "[parameters('Is_AzureDataLakestorage_password')]"
 					},
@@ -183,6 +213,18 @@
 					},
 					"AzureSqlDatabase1_properties_typeProperties_userName": {
 						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_userName')]"
+					},
+					"GenericADLS_CSV_properties_typeProperties_url": {
+						"value": "[parameters('GenericADLS_CSV_properties_typeProperties_url')]"
+					},
+					"GenericSQLDB_properties_typeProperties_server": {
+						"value": "[parameters('GenericSQLDB_properties_typeProperties_server')]"
+					},
+					"GenericSQLDB_properties_typeProperties_database": {
+						"value": "[parameters('GenericSQLDB_properties_typeProperties_database')]"
+					},
+					"GenericSQLDB_properties_typeProperties_userName": {
+						"value": "[parameters('GenericSQLDB_properties_typeProperties_userName')]"
 					},
 					"Is_AzureDataLakestorage_properties_typeProperties_server": {
 						"value": "[parameters('Is_AzureDataLakestorage_properties_typeProperties_server')]"
