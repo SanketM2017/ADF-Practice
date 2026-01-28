@@ -10,9 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "employee.csv",
-				"folderPath": "azure_practice_folder",
-				"fileSystem": "azure-practice-container"
+				"fileSystem": "assignment"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

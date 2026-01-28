@@ -1,9 +1,9 @@
 {
-	"name": "copy_Address_SQlDB_ADLSFolder",
+	"name": "MultipleFileUploadAdLs",
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy_DB_Table_TO_ADLS",
+				"name": "Copy data1",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -16,9 +16,15 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "AzureSqlSource",
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"fileListPath": "assignment/azuredataset/dd.txt",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
 					},
 					"sink": {
 						"type": "DelimitedTextSink",
@@ -43,33 +49,18 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "GenericAzureSQLDB",
-						"type": "DatasetReference",
-						"parameters": {
-							"SchemaName": "dbo",
-							"TableName": "SalesOrderDetailone"
-						}
+						"referenceName": "AdLsContainer",
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "GenericAdLs_DS1",
-						"type": "DatasetReference",
-						"parameters": {
-							"FileName": "ProductModell.csv"
-						}
+						"type": "DatasetReference"
 					}
 				]
 			}
 		],
-		"variables": {
-			"FileName": {
-				"type": "String"
-			},
-			"ProductModel": {
-				"type": "String"
-			}
-		},
 		"folder": {
 			"name": "adf-practice"
 		},

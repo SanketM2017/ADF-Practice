@@ -1,8 +1,8 @@
 {
-	"name": "GenericAdLs_DS1",
+	"name": "AdLsContainer",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "GenericADLS_CSV",
+			"referenceName": "Ls_AdlsGen2",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,50 +10,49 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "pandemicdata-copyactivity",
-				"fileSystem": "raw"
+				"folderPath": "azuredataset",
+				"fileSystem": "assignment"
 			},
 			"columnDelimiter": ",",
-			"rowDelimiter": "\n",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": [
 			{
-				"name": "circuitId",
+				"name": "claim_id",
 				"type": "String"
 			},
 			{
-				"name": "circuitRef",
+				"name": "encounter_id",
 				"type": "String"
 			},
 			{
-				"name": "name",
+				"name": "payer_id",
 				"type": "String"
 			},
 			{
-				"name": "location",
+				"name": "admit_date",
 				"type": "String"
 			},
 			{
-				"name": "country",
+				"name": "discharge_date",
 				"type": "String"
 			},
 			{
-				"name": "lat",
+				"name": "total_billed_amount",
 				"type": "String"
 			},
 			{
-				"name": "lng",
+				"name": "total_allowed_amount",
 				"type": "String"
 			},
 			{
-				"name": "alt",
+				"name": "total_paid_amount",
 				"type": "String"
 			},
 			{
-				"name": "url",
+				"name": "claim_status",
 				"type": "String"
 			}
 		]
