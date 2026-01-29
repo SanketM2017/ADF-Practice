@@ -5,20 +5,12 @@
 			"referenceName": "AzureSqlDatabase1",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"tableName": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "demodata",
-			"table": {
-				"value": "@dataset().tableName",
-				"type": "Expression"
-			}
+			"schema": "dbo",
+			"table": "Table_Count_Audit"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
