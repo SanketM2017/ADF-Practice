@@ -1,0 +1,40 @@
+{
+	"name": "SourceDataset_lw8",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GenericADLS_CSV",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "GreenHouseEmission.csv ",
+				"fileSystem": "assignment"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "diagnosis_id",
+				"type": "String"
+			},
+			{
+				"name": "encounter_id",
+				"type": "String"
+			},
+			{
+				"name": "diagnosis_description",
+				"type": "String"
+			},
+			{
+				"name": "is_primary",
+				"type": "String"
+			}
+		]
+	}
+}
