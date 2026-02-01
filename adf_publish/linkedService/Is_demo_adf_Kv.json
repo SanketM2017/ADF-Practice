@@ -1,11 +1,11 @@
 {
 	"name": "Is_demo_adf_Kv",
-	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "AzureKeyVault",
 		"typeProperties": {
-			"baseUrl": "https://kv-adf-practice05.vault.azure.net/"
+			"baseUrl": "https://sanketContoso-vault25.vault.azure.net/"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
 }
