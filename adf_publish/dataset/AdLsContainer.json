@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "pandemicdata-copyactivity",
-				"fileSystem": "raw"
+				"folderPath": "input",
+				"fileSystem": "assignment"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

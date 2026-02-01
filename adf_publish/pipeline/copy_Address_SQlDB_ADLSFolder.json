@@ -54,10 +54,7 @@
 				"outputs": [
 					{
 						"referenceName": "GenericAdLs_DS1",
-						"type": "DatasetReference",
-						"parameters": {
-							"FileName": "ProductModell.csv"
-						}
+						"type": "DatasetReference"
 					}
 				]
 			}
