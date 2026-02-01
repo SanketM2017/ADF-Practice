@@ -1,0 +1,16 @@
+{
+	"name": "DestinationDataset_lw8",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GenericSQLDB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "GreenHouseEmission"
+		}
+	}
+}
