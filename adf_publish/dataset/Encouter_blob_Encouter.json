@@ -1,0 +1,65 @@
+{
+	"name": "Encouter_blob_Encouter",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "encounters_20251102.csv",
+				"folderPath": "azuredataset",
+				"container": "assignment"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "encounter_id",
+				"type": "String"
+			},
+			{
+				"name": "patient_id",
+				"type": "String"
+			},
+			{
+				"name": "provider_id",
+				"type": "String"
+			},
+			{
+				"name": "encounter_type",
+				"type": "String"
+			},
+			{
+				"name": "encounter_start",
+				"type": "String"
+			},
+			{
+				"name": "encounter_end",
+				"type": "String"
+			},
+			{
+				"name": "height_cm",
+				"type": "String"
+			},
+			{
+				"name": "weight_kg",
+				"type": "String"
+			},
+			{
+				"name": "systolic_bp",
+				"type": "String"
+			},
+			{
+				"name": "diastolic_bp",
+				"type": "String"
+			}
+		]
+	}
+}
