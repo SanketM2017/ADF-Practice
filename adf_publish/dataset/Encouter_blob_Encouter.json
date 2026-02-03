@@ -10,8 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "encounters_20251102.csv",
-				"folderPath": "azuredataset",
 				"container": "assignment"
 			},
 			"columnDelimiter": ",",
