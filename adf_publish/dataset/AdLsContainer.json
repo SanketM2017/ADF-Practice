@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "input",
-				"fileSystem": "assignment"
+				"folderPath": "output",
+				"fileSystem": "azure-demo-container"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

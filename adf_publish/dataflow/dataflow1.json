@@ -1,0 +1,101 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AdLsContainer",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "AdLsContainer",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AdLsContainer",
+						"type": "DatasetReference"
+					},
+					"name": "sink1outputData"
+				}
+			],
+			"transformations": [
+				{
+					"name": "join1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          claim_id as string,",
+				"          encounter_id as string,",
+				"          payer_id as string,",
+				"          admit_date as string,",
+				"          discharge_date as string,",
+				"          total_billed_amount as string,",
+				"          total_allowed_amount as string,",
+				"          total_paid_amount as string,",
+				"          claim_status as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     enableCdc: true,",
+				"     mode: 'read',",
+				"     skipInitialLoad: false) ~> source1",
+				"source(output(",
+				"          claim_id as string,",
+				"          encounter_id as string,",
+				"          payer_id as string,",
+				"          admit_date as string,",
+				"          discharge_date as string,",
+				"          total_billed_amount as string,",
+				"          total_allowed_amount as string,",
+				"          total_paid_amount as string,",
+				"          claim_status as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source2",
+				"source1, source2 join(source1@claim_id == source2@claim_id,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     partitionBy('hash', 1),",
+				"     broadcast: 'auto')~> join1",
+				"join1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          claim_id as string,",
+				"          encounter_id as string,",
+				"          payer_id as string,",
+				"          admit_date as string,",
+				"          discharge_date as string,",
+				"          total_billed_amount as string,",
+				"          total_allowed_amount as string,",
+				"          total_paid_amount as string,",
+				"          claim_status as string",
+				"     ),",
+				"     partitionFileNames:['joinsimple.csv'],",
+				"     truncate: true,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          claim_id = source1@claim_id",
+				"     ),",
+				"     partitionBy('hash', 1)) ~> sink1outputData"
+			]
+		}
+	}
+}
